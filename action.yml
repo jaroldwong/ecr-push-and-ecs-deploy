@@ -1,14 +1,17 @@
-name: 'Build and force redeploy'
+name: 'ECR push and ECS deploy'
 description: 'Build and push new image to AWS ECR and force new deployment of ECS service'
+branding:
+  icon: 'upload-cloud'
+  color: 'orange'
 inputs:
   ecr-registry:
-    description: 'ECR registry'
+    description: 'ECR registry URI'
     required: true
   ecr-repository:
-    description: 'ECR repository'
+    description: 'ECR repository name'
     required: true
   image-tag:
-    description: 'Image tag. Defaults to latest'
+    description: 'ECR image tag. Defaults to latest'
     required: true
     default: 'latest'
   ecs-service:
@@ -24,7 +27,7 @@ runs:
         docker push ${{ inputs.ecr-registry }}/${{ inputs.ecr-repository }}:${{ inputs.image-tag }}
         echo "::set-output name=image::${{ inputs.ecr-registry }}/${{ inputs.ecr-repository }}:${{ inputs.image-tag }}"
       shell: bash
-    - name : Force new deployment
+    - name : Force new AWS ECS deployment
       run: |
         aws ecs update-service --cluster default --service ${{ inputs.ecs-service }} --force-new-deployment
       shell: bash
