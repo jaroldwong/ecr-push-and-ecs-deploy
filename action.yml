@@ -10,7 +10,7 @@ inputs:
   ecr-repository:
     description: 'ECR repository name'
     required: true
-  ecr-image-tag:
+  image-tag:
     description: 'ECR image tag. Defaults to latest'
     required: true
     default: 'latest'
