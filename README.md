@@ -35,5 +35,6 @@ jobs:
         with:
           ecr-registry: ${{ steps.login-ecr.outputs.registry }}
           ecr-repository: 'Repository name'
+          ecs-cluster: 'ECS Cluster name'
           ecs-service: 'Service name'
 ```
