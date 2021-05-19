@@ -31,7 +31,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build and redeploy
-        uses: jaroldwong/ecr-push-and-ecs-deploy@v1
+        uses: jaroldwong/ecr-push-and-ecs-deploy@v1.1
         with:
           ecr-registry: ${{ steps.login-ecr.outputs.registry }}
           ecr-repository: 'Repository name'
