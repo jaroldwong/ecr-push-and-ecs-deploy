@@ -29,7 +29,6 @@ runs:
       run: |
         docker build -t ${{ inputs.ecr-registry }}/${{ inputs.ecr-repository }}:${{ inputs.image-tag }} .
         docker push ${{ inputs.ecr-registry }}/${{ inputs.ecr-repository }}:${{ inputs.image-tag }}
-        echo "::set-output name=image::${{ inputs.ecr-registry }}/${{ inputs.ecr-repository }}:${{ inputs.image-tag }}"
       shell: bash
     - name : Force new AWS ECS deployment
       run: |
